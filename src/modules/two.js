@@ -1,4 +1,4 @@
 function getTwo() {
-  console.log("two.js");
+  console.log("two1.js");
 }
 export default getTwo;

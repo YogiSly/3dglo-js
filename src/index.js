@@ -1,4 +1,2 @@
-import getOne from "./modules/one.js";
-import getTwo from "./modules/two.js";
-getOne();
-getTwo();
+import timer from "./modules/timer.js";
+timer("06 december 2021");
