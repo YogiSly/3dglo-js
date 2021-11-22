@@ -1,10 +1,5 @@
-function twoNumber(num) {
-  if (num >= 0 && num <= 60 && num % 100 < 10) {
-    return "0" + num;
-  } else {
-    return num;
-  }
-}
+const twoNumber = (num) => (num < 10 ? `0${num}` : num);
+
 const timer = (deadline) => {
   const timerHours = document.getElementById("timer-hours");
   const timerMinutes = document.getElementById("timer-minutes");
