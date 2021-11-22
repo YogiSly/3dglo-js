@@ -28,7 +28,7 @@ const calc = () => {
       element.value = element.value.replace(/[^a-zA-Z\@\-\_\.\!\~\*]+/gi, "");
     });
   });
-  inputCalc.forEach((input) => {
+  tel.forEach((input) => {
     input.addEventListener("input", () => {
       input.value = input.value.replace(/[^\d\(\)\-]+/gi, "");
     });
