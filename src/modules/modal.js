@@ -1,42 +1,47 @@
 const modal = () => {
-  const modal = document.querySelector(".popup");
+  const modalPop = document.querySelector(".popup");
   const buttons = document.querySelectorAll(".form-btn");
-  const closeBtn = modal.querySelector("button.popup-close");
+  const closeBtn = modalPop.querySelector(".popup-close");
 
-  modal.style.opacity = 0;
+  modalPop.style.opacity = 0;
 
   const showModal = () => {
-    modal.style.opacity = 0;
-    setInterval(() => {
-      if (modal.style.opacity < 1) {
-        modal.style.opacity =
-          Math.round((+modal.style.opacity + 0.1) * 10) / 10;
-      } else {
-        clearInterval(showModal);
+    modalPop.style.opacity = 0;
+    const show = setInterval(() => {
+      if (modalPop.style.opacity < 1) {
+        modalPop.style.opacity =
+          Math.round((+modalPop.style.opacity + 0.01) * 100) / 100;
       }
-    }, 200);
+      if (modalPop.style.opacity >= 1) {
+        modalPop.style.opacity = 1;
+        clearInterval(show);
+      }
+    }, 5);
   };
 
   const hideModal = () => {
-    setInterval(function hider() {
-      if (modal.style.opacity > 0) {
-        modal.style.opacity = Math.round((modal.style.opacity - 0.1) * 10) / 10;
-      } else {
-        clearInterval(hider);
+    const hide = setInterval(() => {
+      if (modalPop.style.opacity > 0) {
+        modalPop.style.opacity =
+          Math.round((modalPop.style.opacity - 0.01) * 100) / 100;
       }
-    }, 200);
+      if (modalPop.style.opacity <= 0) {
+        modalPop.style.opacity = 0;
+        clearInterval(hide);
+        modalPop.style.display = "none";
+      }
+    }, 5);
   };
 
   buttons.forEach((btns) => {
     btns.addEventListener("click", () => {
-      modal.style.display = "block";
+      modalPop.style.display = "block";
       showModal();
     });
   });
 
   closeBtn.addEventListener("click", () => {
     hideModal();
-    setTimeout((modal.style.display = "none"), 2000);
   });
 };
 export default modal;
