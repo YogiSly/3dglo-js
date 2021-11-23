@@ -1,4 +1,4 @@
-const calc = () => {
+const regular = () => {
   const inputCalc = document.querySelectorAll(".calc-item");
   const typeText = document.querySelectorAll("input[type='text']");
   const plHld = document.querySelectorAll(
@@ -34,4 +34,4 @@ const calc = () => {
     });
   });
 };
-export default calc;
+export default regular;

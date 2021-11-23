@@ -1,7 +1,6 @@
 const modal = () => {
   const modalPop = document.querySelector(".popup");
-  const buttons = document.querySelectorAll(".form-btn");
-  const closeBtn = modalPop.querySelector(".popup-close");
+  const buttons = document.querySelectorAll(".popup-btn");
 
   modalPop.style.opacity = 0;
 
@@ -40,8 +39,13 @@ const modal = () => {
     });
   });
 
-  closeBtn.addEventListener("click", () => {
-    hideModal();
+  modalPop.addEventListener("click", (e) => {
+    if (
+      !e.target.closest(".popup-content") ||
+      e.target.classList.contains("popup-close")
+    ) {
+      hideModal();
+    }
   });
 };
 export default modal;
