@@ -1,7 +1,8 @@
+import { modalAnimation } from "../modules/helpers.js";
 const modal = () => {
   const modalPop = document.querySelector(".popup");
   const buttons = document.querySelectorAll(".popup-btn");
-
+  modalAnimation();
   modalPop.style.opacity = 0;
 
   const showModal = () => {
