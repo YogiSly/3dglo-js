@@ -11,6 +11,7 @@ const slider = () => {
   for (let i = 0; i < slides.length; i++) {
     if (i === 0) {
       list.append(li);
+      li.classList.add("dot-active");
     } else {
       list.insertAdjacentHTML("beforeend", `<li class="dot"></li>`);
     }
