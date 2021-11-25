@@ -1,6 +1,8 @@
 const regular = () => {
   const inputCalc = document.querySelectorAll(".calc-item");
-  const typeText = document.querySelectorAll("input[type='text']");
+  const typeText = document.querySelectorAll(
+    "input[type='text']:not(.calc-item)"
+  );
   const plHld = document.querySelectorAll(
     "input[placeholder='Ваше сообщение']"
   );
