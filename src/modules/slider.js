@@ -1,9 +1,21 @@
 const slider = () => {
   const sliderBlock = document.querySelector(".portfolio-content");
   const slides = document.querySelectorAll(".portfolio-item");
-  const dots = document.querySelectorAll(".dot");
+  const list = document.querySelector(".portfolio-dots");
+  const li = document.createElement("li");
+  let dots = document.querySelectorAll(".dot");
   let currentSlide = 0;
   let interval = 0;
+
+  li.classList.add("dot");
+  for (let i = 0; i < slides.length; i++) {
+    if (i === 0) {
+      list.append(li);
+    } else {
+      list.insertAdjacentHTML("beforeend", `<li class="dot"></li>`);
+    }
+  }
+  dots = document.querySelectorAll(".dot");
 
   const prevSlide = (elems, index, strClass) => {
     elems[index].classList.remove(strClass);
