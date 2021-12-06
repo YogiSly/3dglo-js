@@ -3,7 +3,9 @@ const animate = ({ timing, draw, duration }) => {
 
   requestAnimationFrame(function animate(time) {
     let timeFraction = (time - start) / duration;
-    if (timeFraction > 1) timeFraction = 1;
+    if (timeFraction > 1) {
+      timeFraction = 1;
+    }
 
     let progress = timing(timeFraction);
 

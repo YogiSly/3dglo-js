@@ -15,25 +15,25 @@ const regular = () => {
     });
   });
 
-  typeText.forEach((element) => {
-    element.addEventListener("input", () => {
-      element.value = element.value.replace(/[^а-яА-Я\- ]+/gi, "");
-    });
-  });
-  plHld.forEach((element) => {
-    element.addEventListener("input", () => {
-      element.value = element.value.replace(/[^а-яА-Я\- ]+/gi, "");
-    });
-  });
+  // typeText.forEach((element) => {
+  //   element.addEventListener("input", () => {
+  //     element.value = element.value.replace(/[^а-яА-Я\- ]+/gi, "");
+  //   });
+  // });
+  // plHld.forEach((element) => {
+  //   element.addEventListener("input", () => {
+  //     element.value = element.value.replace(/[^а-яА-Я\- ]+/gi, "");
+  //   });
+  // });
   email.forEach((element) => {
     element.addEventListener("input", () => {
       element.value = element.value.replace(/[^a-zA-Z\@\-\_\.\!\~\*]+/gi, "");
     });
   });
-  tel.forEach((input) => {
-    input.addEventListener("input", () => {
-      input.value = input.value.replace(/[^\d\(\)\-]+/gi, "");
-    });
-  });
+  // tel.forEach((input) => {
+  //   input.addEventListener("input", () => {
+  //     input.value = input.value.replace(/[^\d\(\)\-]+/gi, "");
+  //   });
+  // });
 };
 export default regular;
