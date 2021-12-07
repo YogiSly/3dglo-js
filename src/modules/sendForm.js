@@ -28,7 +28,15 @@ const sendForm = ({ formId, someElem = [] }) => {
         }
       }
     });
-    if (boolName === true && boolPhone === true) {
+    console.log(formId);
+    if (
+      formId === "form2" &&
+      boolName === true &&
+      boolPhone === true &&
+      boolMessage === true
+    ) {
+      success = true;
+    } else if (formId != "form2" && boolName === true && boolPhone === true) {
       success = true;
     }
     return success;
