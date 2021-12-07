@@ -55,7 +55,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
 
-    statusBlock.textContent = loadText;
+    statusBlock.innerHTML = "<img src='../src/images/load.gif'>";
     form.append(statusBlock);
 
     formData.forEach((val, key) => {
