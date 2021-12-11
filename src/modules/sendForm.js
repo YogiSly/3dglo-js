@@ -1,7 +1,6 @@
 const sendForm = ({ formId, someElem = [] }) => {
   const form = document.getElementById(formId);
   const statusBlock = document.createElement("div");
-  const loadText = "Загрузка...";
   const errorText = "Ошибка...";
   const successText = "Спасибо! Наш менеджер с вами свяжется";
 
@@ -9,16 +8,21 @@ const sendForm = ({ formId, someElem = [] }) => {
     let success = false;
     let boolName = false;
     let boolPhone = false;
+    let boolEmail = false;
     let boolMessage = false;
-    console.log(list);
     list.forEach((elem) => {
       if (elem.attributes.name.value === "user_name") {
-        if (/^[а-яА-Я]*$/gi.test(elem.value)) {
+        if (/^[а-яА-Я]{2,}$/gi.test(elem.value)) {
           boolName = true;
         }
       }
+      if (elem.attributes.name.value === "user_email") {
+        if (/^[\da-zA-Z\-@\.]{5,}$/gi.test(elem.value)) {
+          boolEmail = true;
+        }
+      }
       if (elem.attributes.name.value === "user_phone") {
-        if (/^[\d\-\+\(\)]*$/gi.test(elem.value)) {
+        if (/^[\d\-\+\(\)]{11,}$/gi.test(elem.value)) {
           boolPhone = true;
         }
       }
@@ -28,15 +32,20 @@ const sendForm = ({ formId, someElem = [] }) => {
         }
       }
     });
-    console.log(formId);
     if (
       formId === "form2" &&
       boolName === true &&
       boolPhone === true &&
+      boolEmail === true &&
       boolMessage === true
     ) {
       success = true;
-    } else if (formId != "form2" && boolName === true && boolPhone === true) {
+    } else if (
+      formId != "form2" &&
+      boolName === true &&
+      boolEmail === true &&
+      boolPhone === true
+    ) {
       success = true;
     }
     return success;
@@ -55,7 +64,7 @@ const sendForm = ({ formId, someElem = [] }) => {
     const formData = new FormData(form);
     const formBody = {};
 
-    statusBlock.innerHTML = "<img src='../src/images/load.gif'>";
+    statusBlock.innerHTML = "<img src='./src/images/load.png'>";
     form.append(statusBlock);
 
     formData.forEach((val, key) => {
@@ -76,6 +85,9 @@ const sendForm = ({ formId, someElem = [] }) => {
       sendData(formBody)
         .then((data) => {
           statusBlock.textContent = successText;
+          setTimeout(() => {
+            statusBlock.textContent = "";
+          }, 5000);
           formElements.forEach((input) => {
             input.value = "";
           });
@@ -85,6 +97,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         });
     } else {
       alert("Данные не валидны");
+      statusBlock.textContent = "";
     }
   };
   try {
