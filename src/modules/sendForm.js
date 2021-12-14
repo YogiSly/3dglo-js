@@ -19,9 +19,8 @@ const sendForm = ({ formId, someElem = [] }) => {
       if (elem.attributes.name.value === "user_name") {
         if (/^[а-яА-Я]{2,}$/gi.test(elem.value)) {
           boolName = true;
-          // elem._setCustomValidity("Заполните данные");
         } else {
-          elem.setCustomValidity("");
+          elem.setCustomValidity("Заполните не менее 2-х руских символов");
           elem.reportValidity();
         }
       }
@@ -29,7 +28,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         if (/^[\da-zA-Z\-@\.]{5,}$/gi.test(elem.value)) {
           boolEmail = true;
         } else {
-          elem.setCustomValidity("");
+          elem.setCustomValidity("Заполните правильно e-mail");
           elem.reportValidity();
         }
       }
@@ -37,7 +36,7 @@ const sendForm = ({ formId, someElem = [] }) => {
         if (/^[\d\-\+\(\)]{11,}$/gi.test(elem.value)) {
           boolPhone = true;
         } else {
-          elem.setCustomValidity("");
+          elem.setCustomValidity("Заполните не менее 11 цифр");
           elem.reportValidity();
         }
       }
@@ -45,11 +44,10 @@ const sendForm = ({ formId, someElem = [] }) => {
         if (/^[\dа-яА-Я\-\(\)\,\.\!\?\:\;]*$/gi.test(elem.value)) {
           boolMessage = true;
         } else {
-          elem.setCustomValidity("");
+          elem.setCustomValidity("Заполните сообщение русскими буквами");
           elem.reportValidity();
         }
       }
-      elem.setCustomValidity("Заполните данные");
     });
     if (
       formId === "form2" &&
