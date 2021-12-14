@@ -25,11 +25,11 @@ const modal = () => {
   });
 
   modalPop.addEventListener("click", (e) => {
-    if (window > 768) {
-      if (
-        !e.target.closest(".popup-content") ||
-        e.target.classList.contains("popup-close")
-      ) {
+    if (
+      !e.target.closest(".popup-content") ||
+      e.target.classList.contains("popup-close")
+    ) {
+      if (window > 768) {
         animate({
           duration: 550,
           timing(timeFraction) {
@@ -42,10 +42,10 @@ const modal = () => {
         setTimeout(() => {
           modalPop.style.display = "none";
         }, 550);
+      } else {
+        modalPop.style.opacity = 0;
+        modalPop.style.display = "none";
       }
-    } else {
-      modalPop.style.opacity = 0;
-      modalPop.style.display = "none";
     }
   });
 };
