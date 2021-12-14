@@ -3,34 +3,53 @@ const sendForm = ({ formId, someElem = [] }) => {
   const statusBlock = document.createElement("div");
   const errorText = "Ошибка...";
   const successText = "Спасибо! Наш менеджер с вами свяжется";
+  let boolName = false;
+  let boolPhone = false;
+  let boolEmail = false;
+  let boolMessage = false;
 
+  form.noValidate = true;
   const validate = function (list) {
     let success = false;
-    let boolName = false;
-    let boolPhone = false;
-    let boolEmail = false;
-    let boolMessage = false;
+    boolName = false;
+    boolPhone = false;
+    boolEmail = false;
+    boolMessage = false;
     list.forEach((elem) => {
       if (elem.attributes.name.value === "user_name") {
         if (/^[а-яА-Я]{2,}$/gi.test(elem.value)) {
           boolName = true;
+          // elem._setCustomValidity("Заполните данные");
+        } else {
+          elem.setCustomValidity("");
+          elem.reportValidity();
         }
       }
       if (elem.attributes.name.value === "user_email") {
         if (/^[\da-zA-Z\-@\.]{5,}$/gi.test(elem.value)) {
           boolEmail = true;
+        } else {
+          elem.setCustomValidity("");
+          elem.reportValidity();
         }
       }
       if (elem.attributes.name.value === "user_phone") {
         if (/^[\d\-\+\(\)]{11,}$/gi.test(elem.value)) {
           boolPhone = true;
+        } else {
+          elem.setCustomValidity("");
+          elem.reportValidity();
         }
       }
       if (elem.attributes.name.value === "user_message") {
         if (/^[\dа-яА-Я\-\(\)\,\.\!\?\:\;]*$/gi.test(elem.value)) {
           boolMessage = true;
+        } else {
+          elem.setCustomValidity("");
+          elem.reportValidity();
         }
       }
+      elem.setCustomValidity("Заполните данные");
     });
     if (
       formId === "form2" &&
@@ -96,7 +115,6 @@ const sendForm = ({ formId, someElem = [] }) => {
           statusBlock.textContent = errorText;
         });
     } else {
-      alert("Данные не валидны");
       statusBlock.textContent = "";
     }
   };
